@@ -23,6 +23,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', \App\Http\Controllers\HomeController::class)
+->name('home');
