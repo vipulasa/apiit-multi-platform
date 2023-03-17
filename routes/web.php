@@ -23,5 +23,10 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::post('book-now', function(){
+    dd(request()->all());
+    // write the logic on saving the booking information to the database
+});
+
 Route::get('/', \App\Http\Controllers\HomeController::class)
 ->name('home');
