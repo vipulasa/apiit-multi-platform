@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +33,11 @@ Route::prefix('admin')
     ])
     ->group(function () {
 
+        // check if the user has the admin role - Gate::check('accessAdministration')
+
         Route::get('dashboard', function () {
-            dd('Administration');
-        });
+            return view('dashboard');
+        })->name('admin.dashboard');
     });
 
 

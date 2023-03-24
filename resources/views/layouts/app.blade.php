@@ -21,20 +21,6 @@
 </head>
 
 <body class="font-sans antialiased">
-
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId: '595803342165827',
-                autoLogAppEvents: true,
-                xfbml: true,
-                version: 'v16.0'
-            });
-        };
-    </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
-
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
