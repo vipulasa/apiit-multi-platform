@@ -19,10 +19,13 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <div class="ml-3 relative flex space-x-2">
-                    <x-nav-link href="/login">Login</x-nav-link>
-                    <x-nav-link href="/register">Register</x-nav-link>
-                </div>
+                @guest
+                    <div class="ml-3 relative flex space-x-2">
+                        <x-nav-link href="/login">Login</x-nav-link>
+                        <x-nav-link href="/register">Register</x-nav-link>
+                    </div>
+                @endguest
+
                 @auth
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
