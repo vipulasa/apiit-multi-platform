@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +17,24 @@
 
     <!-- Styles -->
     @livewireStyles
+
 </head>
 
 <body class="font-sans antialiased">
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '595803342165827',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v16.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
@@ -41,6 +57,23 @@
 
     @stack('modals')
 
+
+
+    <script>
+        // if (FB instanceof Object
+        // ) {
+        //     // Ask the user for permissions
+        //     FB.login(function(response) {
+        //         if (response.authResponse) {
+        //             console.log('User granted permissions!');
+        //         } else {
+        //             console.log('User declined permissions.');
+        //         }
+        //     }, {
+        //         scope: 'pages_manage_posts'
+        //     });
+        // }
+    </script>
     @livewireScripts
 </body>
 
