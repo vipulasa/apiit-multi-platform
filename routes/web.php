@@ -36,11 +36,19 @@ Route::prefix('admin')
         // check if the user has the admin role - Gate::check('accessAdministration')
 
         Route::get('dashboard', function () {
-            return view('dashboard');
+            return view('admin.dashboard');
         })->name('admin.dashboard');
     });
 
 
-
 Route::get('/', \App\Http\Controllers\HomeController::class)
     ->name('home');
+
+Route::get('/products', \App\Http\Controllers\HomeController::class)
+    ->name('products');
+
+Route::get('/promotions', \App\Http\Controllers\HomeController::class)
+    ->name('promotions');
+
+Route::get('/contact', \App\Http\Controllers\HomeController::class)
+    ->name('contact');
