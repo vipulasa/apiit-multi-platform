@@ -23,10 +23,21 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::post('book-now', function(){
-    dd(request()->all());
-    // write the logic on saving the booking information to the database
-});
+Route::prefix('admin')
+    ->middleware([
+        // check if the user is logged in
+        'auth',
+        // check if the user has the role "admin"
+        'role:admin'
+    ])
+    ->group(function () {
+
+        Route::get('dashboard', function () {
+            dd('Administration');
+        });
+    });
+
+
 
 Route::get('/', \App\Http\Controllers\HomeController::class)
-->name('home');
+    ->name('home');
