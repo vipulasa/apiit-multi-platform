@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="space-y-10 divide-y divide-gray-900/10">
+    <div class="space-y-10 divide-y divide-gray-900/10" x-data="productForm">
         <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
             <div class="px-4 sm:px-0">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">
@@ -74,8 +74,8 @@
                             <label for="photo"
                                 class="block text-sm font-medium leading-6 text-gray-900">Image</label>
                             <div class="mt-2 flex items-center gap-x-3">
-                                <img src="{{ old('image', $product->image) }}" alt="image" class="w-10">
-                                <input type="file" name="image">
+                                <img alt="image" x-bind:src="imagePreview" class="w-10" />
+                                <input type="file" name="image" x-on:change="fileAdded" />
                             </div>
                             @error('image')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -108,4 +108,20 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('productForm', () => ({
+                imagePreview: "{{ $product->image ? "/storage/".$product->image : 'https://via.placeholder.com/320x320.png' }}",
+                init() {
+                    console.log('product form')
+                },
+                fileAdded(e) {
+                    const file = e.target.files[0]
+                    if (file) {
+                        this.imagePreview = URL.createObjectURL(file)
+                    }
+                }
+            }))
+        })
+    </script>
 </x-admin-layout>
