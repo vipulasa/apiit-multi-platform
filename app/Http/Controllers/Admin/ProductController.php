@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = (new Product())->paginate(10);
+        $products = (new Product())->orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.product.index', [
             'products' => $products
@@ -27,7 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.form');
+        return view('admin.product.form', [
+            'product' => new Product()
+        ]);
     }
 
     /**
@@ -35,7 +37,22 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        dd($request);
+        $validated = $request->validated();
+
+        // check if image is present and save it
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->storePublicly('products', 'public');
+        }
+
+        $product = (new Product())->create([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+            'image' => $validated['image'] ?? null,
+            'status' => $validated['status'] ?? false
+        ]);
+
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -51,7 +68,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        // U - CRUD
+        return view('admin.product.form', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -59,7 +78,22 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $validated = $request->validated();
+
+        // check if image is present and save it
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->storePublicly('products', 'public');
+        }
+
+        $product->update([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+            'image' => $validated['image'] ?? $product->image,
+            'status' => $validated['status'] ?? false
+        ]);
+
+        return redirect()->route('admin.product.index');
     }
 
     /**

@@ -42,32 +42,33 @@
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 @foreach ($products as $product)
-                                <tr>
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        {{ $product->id }}
-                                    </td>
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        {{ $product->title }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        {{ Str::limit($product->description, 30) }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        $ {{ $product->price }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        <img src="{{ $product->image }}" alt="{{ $product->title }}" width="100">
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        {{ $product->status ? 'Active' : 'Inactive' }}
-                                    </td>
-                                    <td
-                                        class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                            {{ $product->id }}
+                                        </td>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                            {{ $product->title }}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ Str::limit($product->description, 30) }}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            $ {{ $product->price }}
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            <img src="/storage/{{ $product->image }}" alt="{{ $product->title }}" width="100">
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ $product->status ? 'Active' : 'Inactive' }}
+                                        </td>
+                                        <td
+                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
