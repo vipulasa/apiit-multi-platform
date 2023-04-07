@@ -31,13 +31,16 @@ Route::prefix('admin')
         // check if the user has the role "admin"
         'role:admin'
     ])
+    ->name('admin.')
     ->group(function () {
 
         // check if the user has the admin role - Gate::check('accessAdministration')
 
         Route::get('dashboard', function () {
             return view('admin.dashboard');
-        })->name('admin.dashboard');
+        })->name('dashboard');
+
+        Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
     });
 
 
@@ -45,7 +48,7 @@ Route::get('/', \App\Http\Controllers\HomeController::class)
     ->name('home');
 
 Route::get('/products', \App\Http\Controllers\HomeController::class)
-    ->name('products');
+    ->name('product.index');
 
 Route::get('/promotions', \App\Http\Controllers\HomeController::class)
     ->name('promotions');

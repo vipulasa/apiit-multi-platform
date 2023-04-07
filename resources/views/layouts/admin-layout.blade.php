@@ -26,7 +26,8 @@
                     </li>
 
                     <li>
-                        <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                        <a href="{{ route('admin.product.index') }}"
+                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
                             <svg class="-ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                 width="24" height="24">
                                 <path fill="none" d="M0 0h24v24H0z" />
@@ -145,10 +146,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="px-6 pt-6 2xl:container">
                 {{ $slot }}
-
             </div>
         </div>
     </div>

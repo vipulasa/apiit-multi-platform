@@ -66,5 +66,13 @@ class DatabaseSeeder extends Seeder
             'postal_code' => '12345',
             'country' => 'LK', // default to LK
         ]);
+
+        $this->call([
+            ProductSeeder::class,
+            // CategorySeeder::class,
+            // ProductCategorySeeder::class,
+            // OrderSeeder::class,
+            // OrderItemSeeder::class,
+        ]);
     }
 }
