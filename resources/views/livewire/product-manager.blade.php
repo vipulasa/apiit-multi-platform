@@ -98,8 +98,9 @@
                                                 class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                                 <button type="button" wire:click="edit({{ $product->id }})"
                                                     class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
-                                                <button type="button" wire:click="delete({{ $product->id }})"
-                                                        class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                                                @livewire('product-delete', [
+                                                    'product' => $product
+                                                ])
                                             </td>
                                         </tr>
                                     @endforeach

@@ -26,6 +26,7 @@ class ProductManager extends Component
         'product.status' => 'nullable'
     ];
 
+
     public function mount()
     {
         $this->product = new \App\Models\Product();
