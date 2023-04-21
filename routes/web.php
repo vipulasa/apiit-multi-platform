@@ -55,3 +55,4 @@ Route::get('/promotions', \App\Http\Controllers\HomeController::class)
 
 Route::get('/contact', \App\Http\Controllers\HomeController::class)
     ->name('contact');
+

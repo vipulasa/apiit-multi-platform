@@ -10,6 +10,8 @@ class HotelCard extends Component
 {
     public $price;
 
+    public $tax;
+
     /**
      * Create a new component instance.
      */
@@ -24,7 +26,10 @@ class HotelCard extends Component
     public function render(): View|Closure|string
     {
         // generate a random price
-        $this->price = number_format(rand(100, 1000), 2);
+        $this->price = number_format($this->hotel['price'], 2);
+
+        // get 10% from the price and set it as tax
+        $this->tax = $this->hotel['price'] * 0.1;
 
         return view('components.hotel-card');
     }
