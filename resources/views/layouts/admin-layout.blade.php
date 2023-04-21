@@ -3,14 +3,14 @@
         <aside
             class="ml-[-100%] pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
             <div>
-                <div class="mt-8 text-center">
+                {{-- <div class="mt-8 text-center">
                     <img src="{{ $user->profile_photo_url }}" alt=""
                         class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28">
                     <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
                         {{ $user->first_name . ' ' . $user->last_name }}
                     </h5>
                     <span class="hidden text-gray-400 lg:block">Admin</span>
-                </div>
+                </div> --}}
 
                 <ul class="space-y-2 tracking-wide mt-8">
                     <li>
@@ -35,6 +35,19 @@
                                     d="M15 2a4 4 0 0 1 3.464 6.001L23 8v2h-2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10H1V8l4.536.001A4 4 0 0 1 12 3.355 3.983 3.983 0 0 1 15 2zm-4 8H5v9h6v-9zm8 0h-6v9h6v-9zM9 4a2 2 0 0 0-.15 3.995L9 8h2V6a2 2 0 0 0-1.697-1.977l-.154-.018L9 4zm6 0a2 2 0 0 0-1.995 1.85L13 6v2h2a2 2 0 0 0 1.995-1.85L17 6a2 2 0 0 0-2-2z" />
                             </svg>
                             <span class="group-hover:text-gray-700">Products</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.product-livewire.index') }}"
+                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                            <svg class="-ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z" />
+                                <path
+                                    d="M15 2a4 4 0 0 1 3.464 6.001L23 8v2h-2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10H1V8l4.536.001A4 4 0 0 1 12 3.355 3.983 3.983 0 0 1 15 2zm-4 8H5v9h6v-9zm8 0h-6v9h6v-9zM9 4a2 2 0 0 0-.15 3.995L9 8h2V6a2 2 0 0 0-1.697-1.977l-.154-.018L9 4zm6 0a2 2 0 0 0-1.995 1.85L13 6v2h2a2 2 0 0 0 1.995-1.85L17 6a2 2 0 0 0-2-2z" />
+                            </svg>
+                            <span class="group-hover:text-gray-700">Livewire Products</span>
                         </a>
                     </li>
 

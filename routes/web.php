@@ -41,6 +41,9 @@ Route::prefix('admin')
         })->name('dashboard');
 
         Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
+
+        Route::get('product-livewire', \App\Http\Livewire\ProductManager::class)
+            ->name('product-livewire.index');
     });
 
 
@@ -55,4 +58,3 @@ Route::get('/promotions', \App\Http\Controllers\HomeController::class)
 
 Route::get('/contact', \App\Http\Controllers\HomeController::class)
     ->name('contact');
-
